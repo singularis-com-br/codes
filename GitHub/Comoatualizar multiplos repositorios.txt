@@ -1,0 +1,11 @@
+1 - Cria o diretorio _CDN
+2 - Vincula o repo remoto
+3 - Vincula Master, seleciona pasta e marca "Clonar automaticamente o repositório no diretorio selecionado"
+4 - Vincula o repo local
+5 - Vincula Master, seleciona pasta e marca "Já clonei o repositório, apenas cadastrar webhook"
+6 - OK
+7 - Pega link do webhook do diretorio forkado
+8 - Faz um "Sync fork" no repo forkado
+9 - Adiciona o link no webhook do CDN.SINGULARIS
+10 - Edita um arquivo de CDN para testar
+11 - Testa o push

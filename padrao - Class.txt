@@ -1,0 +1,64 @@
+<?php
+class Release extends Sql
+{
+  public $user_id;
+  public $cols;
+  function __construct($sessao = 0)
+  {
+    $this->table = "`release`";
+    $this->setUserId($sessao);
+  }
+
+  public function setData($array, $compare = true)
+  {
+    $this->data = $array;
+    $cols = [
+      ["value" => "lancamento_id"],
+      ["value" => "dt_pgto_previsao", "func" => "toDate"],
+      ["value" => "dt_pgto", "func" => "toDate"],
+      ["value" => "plano_conta_id"],
+      ["value" => "lancamento"],
+      ["value" => "observacao"],
+      ["value" => "valor_receber","func"=>"toMoney"],
+      ["value" => "valor_recebido","func"=>"toMoney"],
+      ["value" => "valor_pagar"],
+      ["value" => "valor_pago"],
+      ["value" => "parcelas"],
+      ["value" => "caixa_id"],
+      ["value" => "lancamento_grupo"],
+      ["value" => "_created_by_user_id"],
+      ["value" => "_created_at"],
+      ["value" => "_updated_at"],
+      ["value" => "_updated_by_user_id"],      
+      ["value" => "lancamento_status_id"]
+    ];
+
+    if ($compare == true) {
+
+      foreach ($this->data as $k => $v) {
+        $array_search = array_search($k, array_column($cols, 'value'));
+        $fn = $cols[$array_search];
+
+        if ($array_search === false)
+          unset($this->data[$k]);
+        else
+          $this->column($k, $fn);
+      }
+    }
+  }
+
+  public function getUserId()
+  {
+    return $this->user_id;
+  }
+
+  public function setUserId($user_id)
+  {
+    $this->user_id = $user_id;
+  }
+
+  public function setCol($cols)
+  {
+    $this->cols = $cols;
+  }
+}

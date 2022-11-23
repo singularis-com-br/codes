@@ -1,0 +1,2 @@
+//pegar valores dos checkbox ativos
+filter_paradas = [$(".paradas_ckb1:checked").val(), $(".paradas_ckb2:checked").val(), $(".paradas_ckb3:checked").val(), $(".paradas_ckb4:checked").val()].filter(Boolean)
